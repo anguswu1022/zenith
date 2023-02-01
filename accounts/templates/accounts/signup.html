@@ -5,13 +5,19 @@
 {% endblock title %}
 {% block content %}
     <main>
-        <div>
-            <h1>Signup</h1>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button>Signup</button>
-            </form>
+        <div class="container-sm form-background">
+            <h1 class="text-center my-3">Signup</h1>
+            <div class="form-group" align="center">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-2 my-5">
+                        {{ form.as_p }}
+                        </div>
+                    </div>
+                    <button>Signup</button>
+                </form>
+            </div>
         </div>
     </main>
 {% endblock content %}

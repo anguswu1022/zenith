@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from projects.models import Project
+from django import forms
 
 
 class ProjectForm(ModelForm):
@@ -10,3 +11,9 @@ class ProjectForm(ModelForm):
             "description",
             "owner",
         )
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'owner': forms.Select(attrs={'class': 'form-control'}),
+        }

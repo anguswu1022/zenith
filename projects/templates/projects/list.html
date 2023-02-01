@@ -5,18 +5,17 @@
 {% endblock title %}
 {% block content %}
     <main>
-        <div>
-            <h1>My Projects</h1>
-            <div>
-                <p>
-                    <a href="{% url 'create_project' %}">Create a new project</a>
-                </p>
-            </div>
+        <h1 class="text-center my-5">My Projects</h1>
+        <p class="text-center my-4">
+            <a class="fw-bold mb-1 text-underline-hover link-color" href="{% url 'create_project' %}">Create a new project</a>
+        </p>
+        <div class="container my-5">
+            <div class="shadow-4 rounded-4 overflow-hidden">
             {% if not projects %}
                 <p>You are not assigned to any projects</p>
             {% else %}
-                <table>
-                    <thead>
+                <table class="table table-hover table-responsive align-middle mb-0 bg-white">
+                    <thead class="bg-dark text-light">
                         <tr>
                             <th>Name</th>
                             <th>Number of tasks</th>
@@ -26,14 +25,20 @@
                         {% for project in projects %}
                             <tr>
                                 <td>
-                                    <a href="{% url 'show_project' project.id %}">{{ project.name }}</a>
+                                    <div class="d-flex align-items-center ms-3">
+                                        <a class="fw-bold mb-1 text-underline-hover link-color"
+                                        href="{% url 'show_project' project.id %}">{{ project.name }}</a>
+                                    </div>
                                 </td>
-                                <td>{{ project.tasks.count }}</td>
+                                <td>
+                                    {{ project.tasks.count }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             {% endif %}
+            </div>
         </div>
     </main>
 {% endblock content %}
