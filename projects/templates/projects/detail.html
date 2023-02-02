@@ -6,12 +6,15 @@
 {% block content %}
     <main>
         <div>
-            <h1 class="text-center">{{ project.name }}</h1>
+            <h1 class="text-center my-5">{{ project.name }}</h1>
             <p class="text-center">{{ project.description }}</p>
-            <h2 class="text-center">Tasks</h2>
+            <p class="text-center">
+                <a class="fw-bold mb-1 text-underline-hover link-color" href="{% url 'edit_project' project.id %}">Edit Project</a>
+            </p>
             <p class="text-center">
                 <a class="fw-bold mb-1 text-underline-hover link-color" href="{% url 'create_task' %}">Create a new task</a>
             </p>
+            <h2 class="text-center">Tasks</h2>
             <div class="container my-5">
                 <div class="shadow-4 rounded-4 overflow-hidden">
                 {% if project.tasks.count > 0 %}
@@ -31,8 +34,8 @@
                                     <div class="d-flex align-items-center ms-3">
                                     <td>{{ task.name }}</td>
                                     <td>{{ task.assignee }}</td>
-                                    <td>{{ task.start_date }}</td>
-                                    <td>{{ task.due_date }}</td>
+                                    <td>{{ task.start_date|date:"F d, Y" }}</td>
+                                    <td>{{ task.due_date|date:"F d, Y" }}</td>
                                     <td>{{ task.is_completed|yesno:"yes,no" }}</td>
                                     </div>
                                 </tr>
